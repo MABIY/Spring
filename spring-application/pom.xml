@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring</artifactId>
+        <groupId>com.chinal.lh</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <!--application 层 提供controller (不包含 view)- 服务 service 服务  RepositoryQuery 服务（前段界面显示数据查询服务）-->
+    <!--依赖 domain层-->
+    <artifactId>spring-application</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.chinal.lh</groupId>
+            <artifactId>spring-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--webmvc 不需要 没有涉及到 DispatcherServlet-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+</project>
