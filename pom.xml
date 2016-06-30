@@ -26,7 +26,18 @@
                 <scope>import</scope>
             </dependency>
             <!--导入 依赖包bom 管理spring framework 依赖-->
+
+             <!--lombok 辅助小工具-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.16.8</version>
+                <scope>provided</scope>
+            </dependency>
+
         </dependencies>
+
+
     </dependencyManagement>
 
 
@@ -39,6 +50,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
     <!--共同依赖的包-->

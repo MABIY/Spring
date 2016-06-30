@@ -18,7 +18,8 @@ import java.util.concurrent.TimeUnit;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {Components.class, com.chinal.lh.application.controller.Components.class})
+@ComponentScan(basePackageClasses = {Components.class, com.chinal.lh.application.controller.Components.class, com.chinal.lh.infrastructure.Components.class})
+
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override

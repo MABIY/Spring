@@ -1,10 +1,11 @@
 package com.chinal.lh.application.controller;
 
+import com.chinal.lh.domain.Repository.UserRepository;
+import com.chinal.lh.domain.data.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by liuhua on 16-6-29.
@@ -12,8 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloWorld {
 
-    @RequestMapping(value = "/hello",method = RequestMethod.GET)
-    public String greeting() {
-        return "Hello World!";
+    @Autowired
+    UserRepository userRepository;
+
+    @RequestMapping(value = "/hello/{id}",method = RequestMethod.GET)
+    public User greeting(@PathVariable long id) {
+        return userRepository.find(id);
     }
 }
