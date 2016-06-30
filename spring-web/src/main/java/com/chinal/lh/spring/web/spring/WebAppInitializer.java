@@ -7,6 +7,7 @@ import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
@@ -16,8 +17,7 @@ import javax.servlet.ServletRegistration;
  */
 //Implementations of this SPI will be detected automatically by  SpringServletContainerInitializer (在项目中随意放置)
 //实现类 WebAppInitializer 效果等同于web.xml
-public class WebAppInitializer extends AbstractDispatcherServletInitializer {
-
+public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     //TODO  添加 parent context
 //    public void onStartup(javax.servlet.ServletContext container) throws ServletException {
 //        XmlWebApplicationContext appContext = new XmlWebApplicationContext();
@@ -28,22 +28,35 @@ public class WebAppInitializer extends AbstractDispatcherServletInitializer {
 //        dispatcher.addMapping("/");
 //    }
 
+//    @Override
+//    protected WebApplicationContext createRootApplicationContext() {
+//        return null;
+//    }
+//
+//    @Override
+//    protected WebApplicationContext createServletApplicationContext() {
+//        XmlWebApplicationContext cxt = new XmlWebApplicationContext();
+//        cxt.setConfigLocation("/WEB-INF/spring/dispatcher-config.xml");
+//        return cxt;
+//    }
+
     @Override
-    protected WebApplicationContext createRootApplicationContext() {
+    protected Class<?>[] getRootConfigClasses() {
         return null;
     }
 
     @Override
-    protected WebApplicationContext createServletApplicationContext() {
-        XmlWebApplicationContext cxt = new XmlWebApplicationContext();
-        cxt.setConfigLocation("/WEB-INF/spring/dispatcher-config.xml");
-        return cxt;
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class[] {WebConfig.class};
     }
 
     @Override
     protected String[] getServletMappings() {
         return new String[] { "/" };
     }
+
+
+
 
 
 
