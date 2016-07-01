@@ -11,10 +11,19 @@
     <!--基础服务 如数据库服务-->
     <!--依赖 domain 层 application层-->
     <artifactId>spring-infrastructure</artifactId>
+    
 
-    <!--<properties>-->
-        <!--<mybatis.generator.configurationFile>/src/main/java/mybatis-generator-configuration.xml}</mybatis.generator.configurationFile>-->
-    <!--</properties>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <configuration>
+                    <configurationFile>src/main/resources/META-INF/mybatis-generator-configuration.xml</configurationFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
