@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <properties resource="META-INF/db.properties"/>
+
+    <!--jdbc 驱动查找-->
+    <classPathEntry location="${user.home}/.m2/repository/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.jar" />
+    <!--jdbc 驱动查找-->
+
+    <context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3Simple" >
+
+
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <commentGenerator >
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+            <property name="suppressDate" value="false" /> <!-- 是否生成注释代时间戳-->
+        </commentGenerator>
+
+
+        <jdbcConnection driverClass="${main.jdbc.driverClass}"
+                        connectionURL="${main.jdbc.jdbcUrl}"
+                        userId="${main.jdbc.username}"
+                        password="${main.jdbc.password}">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.chinal.lh.domain.data" targetProject="../spring-domain/src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator    targetPackage ="META-INF/mybatis"   targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.chinal.lh.infrastructure.mapper"  targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--<table  tableName="account"  >-->
+            <!--<generatedKey column="ID" sqlStatement="hierarchical" identity="true" />-->
+        <!--</table>-->
+        <!--<table  tableName="clientele"  >-->
+            <!--<generatedKey column="ID" sqlStatement="hierarchical" identity="true" />-->
+        <!--</table>-->
+
+    </context>
+</generatorConfiguration>
+

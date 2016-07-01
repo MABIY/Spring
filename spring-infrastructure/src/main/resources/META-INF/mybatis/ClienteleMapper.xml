@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinal.lh.infrastructure.mapper.ClienteleMapper">
+  <resultMap id="BaseResultMap" type="com.chinal.lh.domain.data.Clientele">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="age" jdbcType="SMALLINT" property="age" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from clientele
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chinal.lh.domain.data.Clientele">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      hierarchical
+    </selectKey>
+    insert into clientele (name, age, sex, 
+      identity)
+    values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=SMALLINT}, #{sex,jdbcType=TINYINT}, 
+      #{identity,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.chinal.lh.domain.data.Clientele">
+    update clientele
+    set name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=SMALLINT},
+      sex = #{sex,jdbcType=TINYINT},
+      identity = #{identity,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, age, sex, identity
+    from clientele
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, age, sex, identity
+    from clientele
+  </select>
+</mapper>

@@ -5,26 +5,20 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.stereotype.Component;
-import org.springframework.util.PathMatcher;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 
 /**
  * Created by liuhua on 16-6-30.
  */
 @Configuration
-@PropertySource("classpath:MATE-INF/db.properties")
+@PropertySource("classpath:META-INF/db.properties")
 @MapperScan("com.chinal.lh.infrastructure.mapper")
 public class MybatisConfig {
 
@@ -35,7 +29,7 @@ public class MybatisConfig {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(getDataSource());
 //        解析 mapper xml 文件地址
-        sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:MATE-INF/mybatis/*.xml"));
+        sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:META-INF/mybatis/*.xml"));
         return sqlSessionFactory.getObject();
     }
 
@@ -59,7 +53,7 @@ public class MybatisConfig {
 //    @Bean
 //    public static PropertyPlaceholderConfigurer ppc() throws IOException {
 //        PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-//            ppc.setLocations(new ClassPathResource("MATE-INF/" + property + ".properties"));
+//            ppc.setLocations(new ClassPathResource("META-INF/" + property + ".properties"));
 //        ppc.setIgnoreUnresolvablePlaceholders(true);
 //        return ppc;
 //    }
