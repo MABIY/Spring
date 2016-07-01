@@ -12,6 +12,23 @@
     <!--依赖 domain 层 application层-->
     <artifactId>spring-infrastructure</artifactId>
 
+    <!--<properties>-->
+        <!--<mybatis.generator.configurationFile>/src/main/java/mybatis-generatorXML-configuration.xml}</mybatis.generator.configurationFile>-->
+    <!--</properties>-->
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.3</version>
+                <configuration>
+                    <configurationFile>src/main/resources/MATE-INF/mybatis-generatorXML-configuration.xml</configurationFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>com.chinal.lh</groupId>

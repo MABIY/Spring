@@ -18,7 +18,7 @@ import javax.servlet.ServletRegistration;
 //Implementations of this SPI will be detected automatically by  SpringServletContainerInitializer (在项目中随意放置)
 //实现类 WebAppInitializer 效果等同于web.xml
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-    //TODO  添加 parent context
+  //TODO  添加 parent context
 //    public void onStartup(javax.servlet.ServletContext container) throws ServletException {
 //        XmlWebApplicationContext appContext = new XmlWebApplicationContext();
 //        appContext.setConfigLocation("/WEB-INF/spring/dispatcher-config.xml");

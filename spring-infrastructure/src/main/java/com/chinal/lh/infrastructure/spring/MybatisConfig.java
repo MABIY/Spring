@@ -35,7 +35,7 @@ public class MybatisConfig {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(getDataSource());
 //        解析 mapper xml 文件地址
-        sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:MATE-INF/**/*.xml"));
+        sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:MATE-INF/mybatis/*.xml"));
         return sqlSessionFactory.getObject();
     }
 
