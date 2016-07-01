@@ -35,41 +35,27 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.7</version>
-                <configuration>
-                    <connectors>
-                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>8888</port>
-                            <maxIdleTime>30000</maxIdleTime>
-                        </connector>
-                    </connectors>
-                    <webAppSourceDirectory>${project.build.directory}/${pom.artifactId}-${pom.version}
-                    </webAppSourceDirectory>
-                    <contextPath>/</contextPath>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.mortbay.jetty</groupId>-->
+                <!--<artifactId>maven-jetty-plugin</artifactId>-->
+                <!--<version>6.1.7</version>-->
+                <!--<configuration>-->
+                    <!--<connectors>-->
+                        <!--<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">-->
+                            <!--<port>8888</port>-->
+                            <!--<maxIdleTime>30000</maxIdleTime>-->
+                        <!--</connector>-->
+                    <!--</connectors>-->
+                    <!--<webAppSourceDirectory>${project.build.directory}/${pom.artifactId}-${pom.version}-->
+                    <!--</webAppSourceDirectory>-->
+                    <!--<contextPath>/</contextPath>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <!--作用不生成web.xml ??-->
-                    <!--<webXml>src/main/webapp/WEB-INF/web.xml</webXml>-->
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <!--欧外的资源文件 默认是${basedir}/src/main/webapp.-->
-                    <outputDirectory>${project.build.directory}/classes</outputDirectory>
-                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                </configuration>
             </plugin>
         </plugins>
     </build>

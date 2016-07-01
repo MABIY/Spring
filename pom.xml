@@ -27,7 +27,7 @@
             </dependency>
             <!--导入 依赖包bom 管理spring framework 依赖-->
 
-             <!--lombok 辅助小工具-->
+            <!--lombok 辅助小工具-->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -41,7 +41,29 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.6</version>
+                    <configuration>
+                        <!--作用不生成web.xml ??-->
+                        <!--<webXml>src/main/webapp/WEB-INF/web.xml</webXml>-->
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                        <!--欧外的资源文件 默认是${basedir}/src/main/webapp.-->
+                        <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                        <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                    </configuration>
+                </plugin>
+
                 <!--当前module 无法执行  需要在spring-infrastructure中执行-->
+
                 <plugin>
                     <groupId>org.mybatis.generator</groupId>
                     <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -50,7 +72,6 @@
             </plugins>
         </pluginManagement>
     </build>
-
 
     <!--共同依赖的包-->
     <dependencies>
@@ -63,8 +84,8 @@
             <artifactId>spring-context</artifactId>
         </dependency>
         <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
     <!--共同依赖的包-->

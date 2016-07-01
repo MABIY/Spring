@@ -19,7 +19,7 @@
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <configuration>
-                    <configurationFile>src/main/resources/META-INF/mybatis-generator-configuration.xml</configurationFile>
+                    <configurationFile>${project.basedir}/src/main/resources/META-INF/mybatis-generator-configuration.xml</configurationFile>
                 </configuration>
             </plugin>
         </plugins>
