@@ -1,8 +1,10 @@
 package com.chinal.lh.domain.data;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Account {
+//反射获 序列化json
+public class Account implements Serializable{
     private Integer id;
 
     private String account;
@@ -52,4 +54,5 @@ public class Account {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
 }
