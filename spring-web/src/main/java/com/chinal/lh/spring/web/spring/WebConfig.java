@@ -18,14 +18,14 @@ import java.util.concurrent.TimeUnit;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {Components.class,com.chinal.lh.application.Components.class})
+@ComponentScan(basePackageClasses = {Components.class, com.chinal.lh.application.Components.class})
 
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-    @Override
-    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-        configurer.mediaType("json", MediaType.APPLICATION_JSON);
-    }
+//    @Override
+//    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+//        configurer.mediaType("json", MediaType.APPLICATION_JSON);
+//    }
 
 //    "/"    默认显示页面
 //    @Override
@@ -33,7 +33,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 //        registry.addViewController("/").setViewName("/static/home");
 //    }
 
-     //static resource  Handler
+    //static resource  Handler
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**")

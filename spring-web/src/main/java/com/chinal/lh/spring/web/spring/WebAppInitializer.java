@@ -1,24 +1,18 @@
 package com.chinal.lh.spring.web.spring;
 
-import org.springframework.cglib.proxy.Dispatcher;
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.XmlWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
+import com.chinal.lh.spring.web.spring.security.SecurityConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import javax.servlet.Filter;
 
 /**
  * Created by liuhua on 16-6-29.
  */
 //Implementations of this SPI will be detected automatically by  SpringServletContainerInitializer (在项目中随意放置)
 //实现类 WebAppInitializer 效果等同于web.xml
+//@ComponentScan
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-  //TODO  添加 parent context
+    //TODO  添加 parent context
 //    public void onStartup(javax.servlet.ServletContext container) throws ServletException {
 //        XmlWebApplicationContext appContext = new XmlWebApplicationContext();
 //        appContext.setConfigLocation("/WEB-INF/spring/dispatcher-config.xml");
@@ -42,24 +36,23 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{RootApplicationConfigure.class};
+        return new Class[]{RootApplicationConfigure.class, SecurityConfig.class};
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[] {WebConfig.class};
+        return new Class[]{WebConfig.class};
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] { "/" };
+        return new String[]{"/"};
     }
 
-
-
-
-
-
+    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[]{};
+    }
 
 
 }

@@ -7,6 +7,6 @@ import org.springframework.context.annotation.Configuration;
  * Created by liuhua on 16-7-3.
  */
 @Configuration
-@ComponentScan(basePackageClasses={ com.chinal.lh.infrastructure.Components.class})
+@ComponentScan(basePackageClasses = {com.chinal.lh.infrastructure.Components.class})
 public class RootApplicationConfigure {
 }
