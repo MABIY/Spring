@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 //反射获 序列化json
-public class Account implements Serializable{
+public class Account{
     private Integer id;
 
     private String account;
