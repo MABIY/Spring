@@ -23,13 +23,14 @@ DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `account` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `account` varchar(50) NOT NULL,
-  `password` varchar(5) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `state` enum('active','zombie','normal') NOT NULL DEFAULT 'normal',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `authority` enum('ROLE_ADMIN','ROLE_STAFF','ROLE_USER') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +39,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (2,'刘华','1111','active','2016-07-01 05:07:22'),(3,'刘华','1111','active','2016-07-01 05:10:45');
+INSERT INTO `account` VALUES (2,'lh','$2a$10$0KBVNURd21siVl1JIFfMcu0acGqWrIx7.eKF.sVPIIvu2.DmKLMMq','active','2016-07-01 05:07:22','ROLE_USER');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +56,10 @@ CREATE TABLE `clientele` (
   `age` smallint(6) DEFAULT NULL,
   `sex` tinyint(4) DEFAULT NULL,
   `identity` varchar(12) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `account_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_clientele_account_id` (`account_id`),
+  CONSTRAINT `fk_clientele_account_id` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -77,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-01 13:12:16
+-- Dump completed on 2016-07-05 13:41:45
