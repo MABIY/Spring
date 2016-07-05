@@ -11,7 +11,7 @@
     <!--基础服务 如数据库服务-->
     <!--依赖 domain 层 application层-->
     <artifactId>spring-infrastructure</artifactId>
-    
+
 
     <build>
         <plugins>
@@ -19,6 +19,7 @@
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <configuration>
+                    <overwrite>true</overwrite>
                     <configurationFile>${project.basedir}/src/main/resources/META-INF/mybatis-generator-configuration.xml</configurationFile>
                 </configuration>
             </plugin>

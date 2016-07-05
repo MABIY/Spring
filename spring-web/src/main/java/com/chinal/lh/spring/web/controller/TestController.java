@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Controller
 public class TestController {
-//    @RequestMapping(value = "/static" ,method = RequestMethod.GET)
-//
-//    public String test() {
-//        return "/static/home.html";
-//    }
+
+    //    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    //    public String login() {
+    //        return "/login.html";
+    //    }
 }

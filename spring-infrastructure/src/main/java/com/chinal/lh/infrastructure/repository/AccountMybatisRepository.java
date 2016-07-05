@@ -32,4 +32,8 @@ public class AccountMybatisRepository implements AccountRepository{
         }
 
     }
+
+    public Account findByName(String name) {
+        return accountMapper.selectByName(name);
+    }
 }

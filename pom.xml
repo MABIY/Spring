@@ -15,6 +15,11 @@
         <module>spring-web</module>
     </modules>
 
+
+    <properties>
+        <spring.security.dependency>4.1.0.RELEASE</spring.security.dependency>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <!--导入 依赖包bom 管理spring framework 依赖-->

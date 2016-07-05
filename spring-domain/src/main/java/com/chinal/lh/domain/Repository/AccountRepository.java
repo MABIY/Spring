@@ -8,4 +8,5 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public interface AccountRepository extends CrudInterfaceRepository<Account,Integer> {
 
+    Account findByName(String name);
 }

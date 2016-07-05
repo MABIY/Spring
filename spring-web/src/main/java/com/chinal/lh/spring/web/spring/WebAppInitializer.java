@@ -1,9 +1,11 @@
 package com.chinal.lh.spring.web.spring;
 
 import com.chinal.lh.spring.web.spring.security.SecurityConfig;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.Filter;
+import javax.servlet.*;
+import java.io.IOException;
 
 /**
  * Created by liuhua on 16-6-29.
@@ -34,6 +36,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 //        return cxt;
 //    }
 
+
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{RootApplicationConfigure.class, SecurityConfig.class};
@@ -51,8 +55,11 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Filter[] getServletFilters() {
-        return new Filter[]{};
+        return new Filter[]{new CharacterEncodingFilter("UTF-8",true,true)};
     }
 
-
+//    @Override
+//    protected FilterRegistration.Dynamic registerServletFilter(ServletContext servletContext, Filter filter) {
+//        return super.registerServletFilter(servletContext, filter);
+//    }
 }
