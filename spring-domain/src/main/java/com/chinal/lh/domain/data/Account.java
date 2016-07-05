@@ -1,10 +1,8 @@
 package com.chinal.lh.domain.data;
 
-import java.io.Serializable;
 import java.util.Date;
 
-//反射获 序列化json
-public class Account{
+public class Account {
     private Integer id;
 
     private String account;
@@ -14,6 +12,8 @@ public class Account{
     private String state;
 
     private Date createTime;
+
+    private String authority;
 
     public Integer getId() {
         return id;
@@ -55,4 +55,11 @@ public class Account{
         this.createTime = createTime;
     }
 
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority == null ? null : authority.trim();
+    }
 }

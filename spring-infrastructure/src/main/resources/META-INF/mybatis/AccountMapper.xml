@@ -7,6 +7,7 @@
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="state" jdbcType="CHAR" property="state" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="authority" jdbcType="CHAR" property="authority" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from account
@@ -16,26 +17,32 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       hierarchical
     </selectKey>
-    insert into account (account, password, state, 
-      create_time)
-    values (#{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{state,jdbcType=CHAR}, 
-      #{createTime,jdbcType=TIMESTAMP})
+    insert into account (account, password, state,
+      create_time, authority)
+    values (#{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{state,jdbcType=CHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{authority,jdbcType=CHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.chinal.lh.domain.data.Account">
     update account
     set account = #{account,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       state = #{state,jdbcType=CHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      authority = #{authority,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, account, password, state, create_time
+    select id, account, password, state, create_time, authority
     from account
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, account, password, state, create_time
+    select id, account, password, state, create_time, authority
     from account
+  </select>
+  <select id="selectByName" resultMap="BaseResultMap">
+    select id, account, password, state, create_time, authority
+    from account
+    where account=#{name}
   </select>
 </mapper>

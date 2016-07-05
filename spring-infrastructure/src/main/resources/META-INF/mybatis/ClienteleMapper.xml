@@ -7,6 +7,7 @@
     <result column="age" jdbcType="SMALLINT" property="age" />
     <result column="sex" jdbcType="TINYINT" property="sex" />
     <result column="identity" jdbcType="VARCHAR" property="identity" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from clientele
@@ -16,26 +17,27 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       hierarchical
     </selectKey>
-    insert into clientele (name, age, sex, 
-      identity)
-    values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=SMALLINT}, #{sex,jdbcType=TINYINT}, 
-      #{identity,jdbcType=VARCHAR})
+    insert into clientele (name, age, sex,
+      identity, account_id)
+    values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=SMALLINT}, #{sex,jdbcType=TINYINT},
+      #{identity,jdbcType=VARCHAR}, #{accountId,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.chinal.lh.domain.data.Clientele">
     update clientele
     set name = #{name,jdbcType=VARCHAR},
       age = #{age,jdbcType=SMALLINT},
       sex = #{sex,jdbcType=TINYINT},
-      identity = #{identity,jdbcType=VARCHAR}
+      identity = #{identity,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, name, age, sex, identity
+    select id, name, age, sex, identity, account_id
     from clientele
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, name, age, sex, identity
+    select id, name, age, sex, identity, account_id
     from clientele
   </select>
 </mapper>

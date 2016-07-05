@@ -44,12 +44,12 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <!--<table  tableName="account"  >-->
-            <!--<generatedKey column="ID" sqlStatement="hierarchical" identity="true" />-->
-        <!--</table>-->
-        <!--<table  tableName="clientele"  >-->
-            <!--<generatedKey column="ID" sqlStatement="hierarchical" identity="true" />-->
-        <!--</table>-->
+        <table  tableName="account"  >
+            <generatedKey column="ID" sqlStatement="hierarchical" identity="true" />
+        </table>
+        <table  tableName="clientele"  >
+            <generatedKey column="ID" sqlStatement="hierarchical" identity="true" />
+        </table>
 
     </context>
 </generatorConfiguration>

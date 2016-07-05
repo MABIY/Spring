@@ -11,6 +11,8 @@ public class Clientele {
 
     private String identity;
 
+    private Integer accountId;
+
     public Integer getId() {
         return id;
     }
@@ -49,5 +51,13 @@ public class Clientele {
 
     public void setIdentity(String identity) {
         this.identity = identity == null ? null : identity.trim();
+    }
+
+    public Integer getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
     }
 }
