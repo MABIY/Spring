@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.*;
 
+import javax.servlet.ServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +24,9 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
         Account account = null;
-        try {
-            //TODO 字符编码过滤 设置
-            account = accountRepository.findByName(new String(userName.getBytes("ISO-8859-1"), "UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        //TODO 字符编码过滤 设置   设置security 字符编码
+         account = accountRepository.findByName(userName);
+
         List<GrantedAuthority> grantedAuthority = new ArrayList<>();
         grantedAuthority.add(new GrantedAuthorityImpl(account.getAuthority()));
         return new User(account.getAccount(),account.getPassword(),grantedAuthority);
