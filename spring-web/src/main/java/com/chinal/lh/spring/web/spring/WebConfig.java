@@ -1,16 +1,11 @@
 package com.chinal.lh.spring.web.spring;
 
-import com.chinal.lh.application.controller.HelloWorld;
-import com.chinal.lh.domain.Repository.AccountRepository;
 import com.chinal.lh.spring.web.controller.Components;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
-import org.springframework.http.MediaType;
 import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.view.InternalResourceView;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -21,8 +16,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {Components.class, com.chinal.lh.application.Components.class})
-
+@ComponentScan(basePackageClasses = {Components.class, com.chinal.lh.application.Components.class,SwaggerConfiguration.class})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 //    @Override
@@ -42,6 +36,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("/WEB-INF/static/html/")
                 .setCacheControl(CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic());
+
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
     @Bean
@@ -52,4 +52,5 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         internalResourceViewResolver.setSuffix(".jsp");
         return internalResourceViewResolver;
     }
+
 }

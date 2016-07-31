@@ -33,6 +33,9 @@
     <name>spring-web</name>
     <artifactId>spring-web</artifactId>
 
+    <properties>
+        <springfox.swagger2>2.5.0</springfox.swagger2>
+    </properties>
 
 
     <build>
@@ -124,6 +127,18 @@
             <version>${spring.security.dependency}</version>
         </dependency>
         <!--spring security-->
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.swagger2}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.swagger2}</version>
+        </dependency>
+
 
     </dependencies>
 
