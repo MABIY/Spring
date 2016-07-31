@@ -39,6 +39,17 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
 
     @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
+
+//        FilterRegistration.Dynamic encodingFilter = servletContext.addFilter("encodingFilter", new CharacterEncodingFilter());
+//        encodingFilter.setInitParameter("encoding", "UTF-8");
+//        encodingFilter.setInitParameter("forceEncoding", "true");
+//        encodingFilter.addMappingForUrlPatterns(null, true, "/*");
+
+    }
+
+    @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{RootApplicationConfigure.class, SecurityConfig.class};
     }
@@ -51,11 +62,6 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
-    }
-
-    @Override
-    protected Filter[] getServletFilters() {
-        return new Filter[]{new CharacterEncodingFilter("UTF-8",true,true)};
     }
 
 //    @Override

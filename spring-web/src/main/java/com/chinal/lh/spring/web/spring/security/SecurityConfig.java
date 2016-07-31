@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
         filter.setEncoding("UTF-8");
         filter.setForceEncoding(true);
-        //在SecurityContextPersistenceFilter 过滤前添加过滤器
+//        在SecurityContextPersistenceFilter 过滤前添加过滤器
         http.addFilterBefore(filter,SecurityContextPersistenceFilter.class);
 
         http

@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by liuhua on 16-7-3.
