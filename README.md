@@ -10,6 +10,8 @@ spring mvc set up step by step
 
        4.Apache Maven 3.3.9
 
+       5.springfox-swagger-ui
+
 ##说明
   数据库sql 在项目root 目录 data/dataBase 下
 
@@ -19,6 +21,9 @@ spring mvc set up step by step
         数据库对应对象             /home/liuhua/project/spring/spring-domain/src/main/java/com/chinal/lh/domain/data
         DAO Interface 对象       spring/spring-infrastructure/src/main/java/com/chinal/lh/infrastructure/mapper
         DAO 对应的xml              spring/spring-infrastructure/src/main/resources/META-INF/mybatis
+
+
+    ###swagger 登陆后访问　http://localhost:8080/swagger-ui.html
 
 
 
