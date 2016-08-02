@@ -1,10 +1,8 @@
-package com.chinal.lh.domain.data;
+package com.chinal.lh.domain.clientele.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
+@Data
 public class Clientele {
     private Integer id;
 
@@ -12,7 +10,7 @@ public class Clientele {
 
     private Short age;
 
-    private Byte sex;
+    private SexStates sex;
 
     private String identity;
 

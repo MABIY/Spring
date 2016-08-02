@@ -1,6 +1,6 @@
 package com.chinal.lh.application.account.model;
 
-import com.chinal.lh.domain.data.Account;
+import com.chinal.lh.domain.account.model.Account;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.CredentialsContainer;

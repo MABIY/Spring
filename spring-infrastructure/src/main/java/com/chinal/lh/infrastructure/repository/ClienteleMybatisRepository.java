@@ -1,8 +1,7 @@
 package com.chinal.lh.infrastructure.repository;
 
-import com.chinal.lh.domain.Repository.ClienteleRepository;
-import com.chinal.lh.domain.data.Account;
-import com.chinal.lh.domain.data.Clientele;
+import com.chinal.lh.domain.clientele.repository.ClienteleRepository;
+import com.chinal.lh.domain.clientele.model.Clientele;
 import com.chinal.lh.infrastructure.mapper.ClienteleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

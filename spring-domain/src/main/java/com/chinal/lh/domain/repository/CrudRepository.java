@@ -1,9 +1,9 @@
-package com.chinal.lh.domain.Repository;
+package com.chinal.lh.domain.repository;
 
 /**
  * Created by liuhua on 16-7-1.
  */
-public interface CrudInterfaceRepository<T,F> {
+public interface CrudRepository<T,F> {
 //    查询
     T find(F f);
 //删除操作

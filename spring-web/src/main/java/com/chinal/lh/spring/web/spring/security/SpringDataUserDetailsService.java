@@ -1,8 +1,8 @@
 package com.chinal.lh.spring.web.spring.security;
 
 import com.chinal.lh.application.account.model.User;
-import com.chinal.lh.domain.Repository.AccountRepository;
-import com.chinal.lh.domain.data.Account;
+import com.chinal.lh.domain.account.repository.AccountRepository;
+import com.chinal.lh.domain.account.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,7 +25,7 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         Account account = accountRepository.findByName(userName);
         List<GrantedAuthority> grantedAuthority = new ArrayList<>();
-        grantedAuthority.add(new GrantedAuthorityImpl(account.getAuthority()));
+        grantedAuthority.add(new GrantedAuthorityImpl(account.getAuthority().toString()));
         return new User(account, grantedAuthority);
     }
 

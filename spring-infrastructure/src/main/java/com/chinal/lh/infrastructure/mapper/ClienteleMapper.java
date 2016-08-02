@@ -1,6 +1,6 @@
 package com.chinal.lh.infrastructure.mapper;
 
-import com.chinal.lh.domain.data.Clientele;
+import com.chinal.lh.domain.clientele.model.Clientele;
 import java.util.List;
 
 public interface ClienteleMapper {

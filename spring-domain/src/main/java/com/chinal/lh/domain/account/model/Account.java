@@ -1,12 +1,10 @@
-package com.chinal.lh.domain.data;
+package com.chinal.lh.domain.account.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.Date;
 
-@Setter
-@Getter
+@Data
 public class Account {
     private Integer id;
 
@@ -14,9 +12,11 @@ public class Account {
 
     private String password;
 
-    private String state;
+    private AccountState state;
 
     private Date createTime;
 
-    private String authority;
+    private AccountAuthority authority;
+
+
 }

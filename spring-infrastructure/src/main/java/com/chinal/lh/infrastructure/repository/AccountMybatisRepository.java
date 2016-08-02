@@ -1,7 +1,7 @@
 package com.chinal.lh.infrastructure.repository;
 
-import com.chinal.lh.domain.Repository.AccountRepository;
-import com.chinal.lh.domain.data.Account;
+import com.chinal.lh.domain.account.repository.AccountRepository;
+import com.chinal.lh.domain.account.model.Account;
 
 import com.chinal.lh.infrastructure.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,8 @@ public class AccountMybatisRepository implements AccountRepository{
 
     }
 
-    public Account findByName(String name) {
-        return accountMapper.selectByName(name);
+    @Override
+    public Account findByName(String userName) {
+        return accountMapper.selectByName(userName);
     }
 }
