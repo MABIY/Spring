@@ -1,4 +1,4 @@
-package com.chinal.lh.application.account.model;
+package com.chinal.lh.spring.web.spring.security;
 
 import com.chinal.lh.domain.account.model.Account;
 import lombok.Getter;

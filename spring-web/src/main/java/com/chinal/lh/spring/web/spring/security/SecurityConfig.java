@@ -29,24 +29,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login/**").permitAll()
-                .antMatchers("/hello/**").hasRole("USER")
-                .anyRequest().authenticated()
+                .antMatchers("/api/auth").permitAll()
+                .antMatchers("/api/**").authenticated()
                 .and()
-                .formLogin()
-                .and()
-                .httpBasic().and()
-                .logout();
+                .logout()
+                .and().addFilterBefore(loginFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .inMemoryAuthentication()
-//                .withUser("user").password("password").roles("").and()
-//                .withUser("admin").password("password").roles("USEUSERR", "ADMIN");
-//    }
 
+    @Bean
+    protected LoginFilter loginFilter() throws Exception {
+        LoginFilter loginFilter = new LoginFilter("/api/auth");
+        loginFilter.setAuthenticationManager(this.authenticationManager());
+        return loginFilter;
+    }
     @Bean
     public SpringDataUserDetailsService springDataUserDetailsService() {
         return new SpringDataUserDetailsService();

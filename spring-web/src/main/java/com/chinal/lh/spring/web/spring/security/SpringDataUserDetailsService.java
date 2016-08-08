@@ -1,6 +1,5 @@
 package com.chinal.lh.spring.web.spring.security;
 
-import com.chinal.lh.application.account.model.User;
 import com.chinal.lh.domain.account.repository.AccountRepository;
 import com.chinal.lh.domain.account.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;

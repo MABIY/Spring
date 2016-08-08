@@ -1,4 +1,4 @@
-package com.chinal.lh.application;
+package com.chinal.lh.application.spring;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 

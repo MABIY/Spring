@@ -20,7 +20,7 @@
     insert into account (account, password, state,
       create_time, authority)
     values (#{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{state,jdbcType=CHAR},
-      #{createTime,jdbcType=TIMESTAMP}, #{authority,jdbcType=CHAR})
+      #{createTime,jdbcType=TIMESTAMP}, #{authority})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.chinal.lh.domain.account.model.Account">
     update account
