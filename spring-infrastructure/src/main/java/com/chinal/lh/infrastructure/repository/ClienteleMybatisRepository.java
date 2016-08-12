@@ -34,4 +34,9 @@ public class ClienteleMybatisRepository implements ClienteleRepository {
             return clienteleMapper.updateByPrimaryKey(clientele);
         }
     }
+
+    @Override
+    public Clientele findByAccountId(Integer f) {
+        return clienteleMapper.selectByAccountId(f);
+    }
 }

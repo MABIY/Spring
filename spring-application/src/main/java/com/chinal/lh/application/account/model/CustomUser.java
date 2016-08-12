@@ -17,7 +17,7 @@ import java.util.*;
  */
 @Setter
 @Getter
-public class User implements UserDetails ,CredentialsContainer {
+public class CustomUser implements UserDetails ,CredentialsContainer {
 
     static final long serialVersionUID = -2401990739623520434l;
 
@@ -30,14 +30,14 @@ public class User implements UserDetails ,CredentialsContainer {
     private final boolean credentialsNonExpired;
     private final boolean enabled;
 
-    public User(Account account,
-                Collection<? extends GrantedAuthority> authorities) {
+    public CustomUser(Account account,
+                      Collection<? extends GrantedAuthority> authorities) {
         this(account, true, true, true, true, authorities);
     }
 
-    public User(Account account, boolean enabled,
-                boolean accountNonExpired, boolean credentialsNonExpired,
-                boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+    public CustomUser(Account account, boolean enabled,
+                      boolean accountNonExpired, boolean credentialsNonExpired,
+                      boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
 
         if (((account.getAccount() == null) || "".equals(account.getAccount() )) || (account.getPassword() == null)) {
             throw new IllegalArgumentException(
@@ -60,7 +60,7 @@ public class User implements UserDetails ,CredentialsContainer {
         // Ensure array iteration order is predictable (as per
         // UserDetails.getAuthorities() contract and SEC-717)
         SortedSet<GrantedAuthority> sortedAuthorities = new TreeSet<GrantedAuthority>(
-                new User.AuthorityComparator());
+                new CustomUser.AuthorityComparator());
 
         for (GrantedAuthority grantedAuthority : authorities) {
             Assert.notNull(grantedAuthority,

@@ -1,6 +1,6 @@
     package com.chinal.lh.spring.web.spring.security;
 
-import com.chinal.lh.application.account.model.User;
+import com.chinal.lh.application.account.model.CustomUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -22,7 +22,7 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws ServletException, IOException {
-        User user = (User)authentication.getPrincipal();
+        CustomUser customUser = (CustomUser)authentication.getPrincipal();
 
         LoginResult result =  new LoginResult("",request.getSession().getId());
         PrintWriter out = response.getWriter();

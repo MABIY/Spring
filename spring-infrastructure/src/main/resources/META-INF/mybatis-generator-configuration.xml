@@ -8,7 +8,7 @@
     <properties resource="META-INF/db.properties"/>
 
     <!--jdbc 驱动查找-->
-    <classPathEntry location="${user.home}/.m2/repository/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.jar" />
+    <classPathEntry location="${customUser.home}/.m2/repository/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.jar" />
     <!--jdbc 驱动查找-->
 
     <context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3Simple" >

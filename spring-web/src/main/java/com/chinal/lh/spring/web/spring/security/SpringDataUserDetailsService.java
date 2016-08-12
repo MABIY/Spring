@@ -1,6 +1,6 @@
 package com.chinal.lh.spring.web.spring.security;
 
-import com.chinal.lh.application.account.model.User;
+import com.chinal.lh.application.account.model.CustomUser;
 import com.chinal.lh.domain.account.repository.AccountRepository;
 import com.chinal.lh.domain.account.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class SpringDataUserDetailsService implements UserDetailsService {
         }
         List<GrantedAuthority> grantedAuthority = new ArrayList<>();
         grantedAuthority.add(new GrantedAuthorityImpl(account.getAuthority().toString()));
-        return new User(account, grantedAuthority);
+        return new CustomUser(account, grantedAuthority);
     }
 
 }

@@ -13,4 +13,6 @@ public interface ClienteleMapper {
     List<Clientele> selectAll();
 
     int updateByPrimaryKey(Clientele record);
+
+    Clientele selectByAccountId(Integer accountId);
 }
