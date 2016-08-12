@@ -23,6 +23,9 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         Account account = accountRepository.findByName(userName);
+        if (account == null) {
+            throw new UsernameNotFoundException("该用户不存在");
+        }
         List<GrantedAuthority> grantedAuthority = new ArrayList<>();
         grantedAuthority.add(new GrantedAuthorityImpl(account.getAuthority().toString()));
         return new User(account, grantedAuthority);
