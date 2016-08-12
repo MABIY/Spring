@@ -1,5 +1,6 @@
     package com.chinal.lh.spring.web.spring.security;
 
+import com.chinal.lh.application.account.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;

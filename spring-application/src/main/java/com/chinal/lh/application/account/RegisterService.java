@@ -1,6 +1,7 @@
 package com.chinal.lh.application.account;
 
 import com.chinal.lh.application.account.model.SignUp;
+import com.chinal.lh.application.account.model.User;
 import com.chinal.lh.application.spring.CurrentUser;
 import com.chinal.lh.domain.account.AccountService;
 import com.chinal.lh.domain.account.model.Account;
@@ -9,7 +10,6 @@ import com.chinal.lh.domain.clientele.repository.ClienteleRepository;
 import com.chinal.lh.domain.clientele.model.Clientele;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 /**

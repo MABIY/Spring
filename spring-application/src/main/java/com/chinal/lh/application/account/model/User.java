@@ -1,4 +1,4 @@
-package com.chinal.lh.spring.web.spring.security;
+package com.chinal.lh.application.account.model;
 
 import com.chinal.lh.domain.account.model.Account;
 import lombok.Getter;
@@ -23,7 +23,7 @@ public class User implements UserDetails ,CredentialsContainer {
 
     private  final Integer id ;
     private final String username;
-    private  String password;
+    private  final String password;
     private final Set<GrantedAuthority> authorities ;
     private final boolean accountNonExpired;
     private final boolean accountNonLocked;
