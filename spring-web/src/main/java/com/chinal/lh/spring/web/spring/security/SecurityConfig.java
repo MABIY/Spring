@@ -37,9 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
         public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                             org.springframework.security.core.AuthenticationException exception) throws IOException, ServletException {
-            response.setStatus(400);
-            response.setCharacterEncoding("UTF-8");
-
+            response.setStatus(403); //账号密码错误 http code return
+            response.setContentType("application/json;charset=utf-8");
             String message="";
 
             if(exception instanceof DisabledException) {
