@@ -68,10 +68,10 @@
                         <!--<warSourceDirectory>src/main/webapp</warSourceDirectory>-->
                         <webResources>
                             <resource>
-                                <directory>${project.basedir}/src/main/webapp</directory>
+                                <directory>${project.basedir}/src/main/webapp/WEB-INF</directory>
                                 <targetPath>WEB-INF/classes</targetPath>
                                 <includes>
-                                    <include>WEB-INF/log4j2.xml</include>
+                                    <include>log4j2.xml</include>
                                 </includes>
                                 <excludes>
                                 </excludes>
