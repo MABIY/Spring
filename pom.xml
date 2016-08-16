@@ -18,6 +18,7 @@
 
     <properties>
         <spring.security.dependency>4.1.0.RELEASE</spring.security.dependency>
+        <Log4j.version>2.6.2</Log4j.version>
     </properties>
 
     <dependencyManagement>
@@ -62,8 +63,20 @@
                         <!--<webXml>src/main/webapp/WEB-INF/web.xml</webXml>-->
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                         <!--欧外的资源文件 默认是${basedir}/src/main/webapp.-->
-                        <outputDirectory>${project.build.directory}/classes</outputDirectory>
-                        <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                        <!--<outputDirectory>${project.build.directory}/classes</outputDirectory>-->
+                        <packagingExcludes>WEB-INF/log4j2.xml</packagingExcludes>
+                        <!--<warSourceDirectory>src/main/webapp</warSourceDirectory>-->
+                        <webResources>
+                            <resource>
+                                <directory>${project.basedir}/src/main/webapp</directory>
+                                <targetPath>WEB-INF/classes</targetPath>
+                                <includes>
+                                    <include>WEB-INF/log4j2.xml</include>
+                                </includes>
+                                <excludes>
+                                </excludes>
+                            </resource>
+                        </webResources>
                     </configuration>
                 </plugin>
 
@@ -83,7 +96,41 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <!--日子配置 start-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${Log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${Log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${Log4j.version}</version>
+        </dependency>
+        <!--日子配置 end-->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -94,10 +141,13 @@
         </dependency>
         <!--swagger 注释依赖包-->
         <dependency>
-        <groupId>io.swagger</groupId>
-        <artifactId>swagger-annotations</artifactId>
-        <version>RELEASE</version>
-    </dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <!--日志jar-->
+
+
     </dependencies>
     <!--共同依赖的包-->
 
