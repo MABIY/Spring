@@ -1,50 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="debug" strict="true" name="XMLConfigTest"
-               packages="org.apache.logging.log4j.test">
-  <Properties>
-    <Property name="filename">target/test.log</Property>
-  </Properties>
-  <Filter type="ThresholdFilter" level="trace"/>
-
+<Configuration status="WARN" monitorInterval="30">
   <Appenders>
-    <Appender type="Console" name="STDOUT">
-      <Layout type="PatternLayout" pattern="%m MDC%X%n"/>
-      <Filters>
-        <Filter type="MarkerFilter" marker="FLOW" onMatch="DENY" onMismatch="NEUTRAL"/>
-        <Filter type="MarkerFilter" marker="EXCEPTION" onMatch="DENY" onMismatch="ACCEPT"/>
-      </Filters>
-    </Appender>
-    <Appender type="Console" name="FLOW">
-      <Layout type="PatternLayout" pattern="%C{1}.%M %m %ex%n"/><!-- class and line number -->
-      <Filters>
-        <Filter type="MarkerFilter" marker="FLOW" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
-        <Filter type="MarkerFilter" marker="EXCEPTION" onMatch="ACCEPT" onMismatch="DENY"/>
-      </Filters>
-    </Appender>
-    <Appender type="File" name="File" fileName="${filename}">
-      <Layout type="PatternLayout">
-        <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
-      </Layout>
-    </Appender>
-    <Appender type="List" name="List">
-    </Appender>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %L %M - %msg%xEx%n"/>
+    </Console>
+    <RollingFile name="ServerLog"
+                             fileName="logs/server.log"
+                             filePattern="logs/server-%d{MM-dd-yyyy}-%i.log.gz">
+      <PatternLayout
+              pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n" />
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1"   modulate="true"/>
+        <SizeBasedTriggeringPolicy size="20 MB" />
+      </Policies>
+    </RollingFile>
+    <RollingFile name="MybatisLog" fileName="logs/mybatis.log"
+                 filePattern="logs/mybatis-%d{MM-dd-yyyy}-%i.log.gz">
+      <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="20 MB" />
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+      </Policies>
+    </RollingFile>
+    <RollingFile name="OtherLog" fileName="logs/other.log"
+                 filePattern="logs/other-%d{MM-dd-yyyy}-%i.log.gz">
+      <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="20 MB" />
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+      </Policies>
+    </RollingFile>
   </Appenders>
-
   <Loggers>
-    <Logger name="org.apache.logging.log4j.test1" level="debug" additivity="false">
-      <Filter type="ThreadContextMapFilter">
-        <KeyValuePair key="test" value="123"/>
-      </Filter>
-      <AppenderRef ref="STDOUT"/>
-    </Logger>
-
-    <Logger name="org.apache.logging.log4j.test2" level="debug" additivity="false">
-      <AppenderRef ref="File"/>
-    </Logger>
-
-    <Root level="trace">
-      <AppenderRef ref="List"/>
+    <logger name="com.chinal.lh.infrastructure.repository" level="debug"  additivity="false" >
+      <appender-ref ref="MybatisLog"/>
+      <appender-ref ref="Console"/>
+    </logger>
+    <logger name="com.chinal.lh" level="debug"  additivity="false">
+      <appender-ref ref="ServerLog"/>
+      <appender-ref ref="Console"/>
+    </logger>
+    <Root level="INFO">
+      <appender-ref ref="Console"/>
+      <appender-ref ref="OtherLog"/>
     </Root>
   </Loggers>
-
 </Configuration>
