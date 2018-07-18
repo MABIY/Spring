@@ -2,18 +2,12 @@
 <!DOCTYPE generatorConfiguration
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-
 <generatorConfiguration>
 
     <properties resource="META-INF/db.properties"/>
-
-    <!--jdbc 驱动查找-->
-    <classPathEntry location="${customUser.home}/.m2/repository/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.jar" />
-    <!--jdbc 驱动查找-->
-
-    <context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3Simple" >
-
-
+    
+    <context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3Simple" >
+        
         <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
         <commentGenerator >
             <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
@@ -45,10 +39,11 @@
         </javaClientGenerator>
 
         <table  tableName="account"  >
-            <generatedKey column="ID" sqlStatement="hierarchical" identity="true" />
+            <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+            <columnOverride column="bigint" javaType="java.math.BigInteger" jdbcType="LONG"></columnOverride>
         </table>
         <table  tableName="clientele"  >
-            <generatedKey column="ID" sqlStatement="hierarchical" identity="true" />
+            <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
         </table>
 
     </context>
